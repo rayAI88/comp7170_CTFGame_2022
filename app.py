@@ -19,11 +19,6 @@ class user(db.Model):
     Q5 = db.Column(db.String(80))
 
 
-
-def main():
-    port=int(os.environ.get("PORT", 8080))
-    app.run(debug=False, host="0.0.0.0", port=port)
-
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -105,6 +100,9 @@ def register():
         return redirect(url_for("login"))
     return render_template("register.html")
 
+
 if __name__ == "__main__":
     db.create_all()
     app.run(debug=True)
+    port=int(os.environ.get("PORT", 8080))
+    app.run(debug=False, host="0.0.0.0", port=port)
