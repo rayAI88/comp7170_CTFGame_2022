@@ -1,6 +1,6 @@
 from flask import Flask,render_template,flash, redirect,url_for,session,logging,request
 from flask_sqlalchemy import SQLAlchemy
-
+import os
 app = Flask(__name__)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
@@ -103,6 +103,5 @@ def register():
 
 if __name__ == "__main__":
     db.create_all()
-    app.run(debug=True)
     port=int(os.environ.get("PORT", 8080))
     app.run(debug=False, host="0.0.0.0", port=port)
